@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>EventosApp</title>
+        <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
+        <style type="text/css">
+            h1 {
+                font-family: Optima;
+                color: gray;
+                size: 25px;
+                align-content: center;
+                text-align: center;
+            }
+
+            p {
+                margin-left: 20px;
+                font-family: Optima;
+                color: gray;
+                align-content: center;
+                size: 30px;
+            }
+
+            form {
+                margin-left: 35%;
+                padding: 20px;
+                background-color: whitesmoke;
+                width: 350px;
+                height: 320px;
+                border-radius: 30px;
+            }
+
+            button {
+                margin-left: 30%;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            input {
+                box-sizing: border-box;
+                border:none;
+                height: 30px;
+                width: 70%;
+                margin:8px;
+                border-radius: 2px;
+            }
+
+            .lista{
+                margin-left: 35%;
+            }
+
+            a{
+                text-decoration: none;
+                color: white;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <th:block th:include="mensagemValidacao"></th:block>
+        <h1>CADASTRO DE EVENTOS</h1>
+        <form method = "post">
+            <p> Nome:       <input type="text" value="" name="nome"/></p>
+            <p>Local:       <input type="text" value="" name="local"/></p>
+            <p>Data:        <input type="date" value="" name="data"/></p>
+            <p>Horario:     <input type="text" value="" name="horario"/></p>
+            <p><button type = "submit" >SALVAR</button></p>
+
+        </form>
+        <h3><button class="lista"><a href="/eventos">LISTA DE EVENTOS</a></button></h3>
+    </body>
+</html>

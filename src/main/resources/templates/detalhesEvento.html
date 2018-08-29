@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>EventosAPP</title>
+
+    <style type="text/css">
+        h1 {
+            font-family: Optima;
+            color: gray;
+            size: 25px;
+            align-content: center;
+            text-align: center;
+        }
+
+        h3{
+            font-family: Optima;
+            color: gray;
+            size: 15px;
+            align-content: center;
+            text-align: center;
+        }
+
+        p {
+            margin-left: 20px;
+            font-family: Optima;
+            color: gray;
+            align-content: center;
+            size: 30px;
+        }
+
+        form {
+            margin: 0% 0% 0% 40%;
+            padding: 20px;
+            background-color: whitesmoke;
+            width: 350px;
+            height: 200px;
+            border-radius: 30px;
+            margin-top: 0%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            cursor: pointer;
+            margin:  0% 0% 0% 30%;
+
+        }
+
+        .fora{
+            margin:  0% 0% 0% 47%;
+        }
+
+        /*.dentro{*/
+            /*margin-left: 30%;*/
+        /*}*/
+
+        input {
+            box-sizing: border-box;
+            border:none;
+            height: 30px;
+            width: 70%;
+            margin:8px;
+            border-radius: 2px;
+
+        }
+
+        .row{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .header{
+            display: flex;
+            size: 40px;
+            justify-content: space-around;
+            bold: true;
+
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        .convidados{
+            width: 500px;
+            height: 500px;
+            margin: 0% 0% 0% 35%
+        }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>EVENTO</h1>
+
+        <div class="header">
+            <p>NOME</p>
+            <p>LOCAL</p>
+            <p>DATA</p>
+            <p>HORARIO</p>
+        </div>
+        <hr>
+
+        <div th:each="evento : ${evento}"  class="container">
+            <div class="row" >
+                <p><span th:text="${evento.nome}"></span></p>
+                <p><span th:text="${evento.local}"></span></p>
+                <p><span th:text="${evento.data}"></span></p>
+                <p><span th:text="${evento.horario}"></span></p>
+            </div>
+        </div>
+
+        <hr>
+        <!--<h3><button class="fora"><a href="/eventos">LISTA DE CONVIDADOS</a></button></h3>-->
+
+        <div class="convidados">
+            <h3>CONVIDADOS</h3>
+
+            <div class="header">
+                <p>NOME</p>
+                <p>RG</p>
+            </div>
+            <hr>
+             <div class="container" th:each="convidado :${convidados}">
+                <div class="row" >
+                    <p><span th:text="${convidado.nomeConvidado}"></span></p>
+                    <p><span th:text="${convidado.rg}"></span></p>
+                </div>
+                <hr>
+             </div>
+        </div>
+
+        <th:block th:include="mensagemValidacao"></th:block>
+        <h1>CADASTRO DE CONVIDADOS</h1>
+        <form method = "post">
+            <p> Nome:       <input type="text" value="" name="nomeConvidado"/></p>
+            <p>RG:     <input type="text" value="" name="rg"/></p>
+            <p><button class="dentro" type = "submit" >ADICIONAR</button></p>
+        </form>
+
+        <h3><button class="fora"><a href="/eventos">LISTA DE EVENTOS</a></button></h3>
+
+    </body>
+</html>

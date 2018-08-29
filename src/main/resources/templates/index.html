@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>EventosAPP</title>
+
+        <style type="text/css">
+            h1 {
+                font-family: Optima;
+                color: gray;
+                size: 25px;
+                align-content: center;
+                text-align: center;
+            }
+
+            p {
+                margin-left: 20px;
+                font-family: Optima;
+                color: gray;
+                align-content: center;
+                size: 30px;
+            }
+
+            form {
+                margin-left: 370px;
+                padding: 20px;
+                background-color: whitesmoke;
+                width: 350px;
+                height: 320px;
+                border-radius: 30px;
+            }
+
+            .a_nome{
+                text-decoration: none;
+                color: #4CAF50;
+            }
+
+            .a_botao{
+                text-decoration: none;
+                color: white;
+            }
+
+            button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                cursor: pointer;
+                margin:  0% 0% 0% 40%;
+            }
+
+            input {
+                box-sizing: border-box;
+                border:none;
+                height: 30px;
+                width: 70%;
+                margin:8px;
+                border-radius: 2px;
+
+            }
+
+            .row{
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .header{
+                display: flex;
+                size: 40px;
+                justify-content: space-around;
+                bold: true;
+
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+        <h1>EVENTOS</h1>
+
+
+        <div class="header">
+            <p>NOME</p>
+            <p>LOCAL</p>
+            <p>DATA</p>
+            <p>HORARIO</p>
+        </div>
+        <hr>
+        <div th:each="evento : ${eventos}">
+            <div class="row">
+                <b><a class = "a_nome" th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></a> </span></p></b>
+                <p><span th:text="${evento.local}"></span></p>
+                <p><span th:text="${evento.data}"></span></p>
+                <p><span th:text="${evento.horario}"></span></p>
+            </div>
+            <hr>
+        </div>
+        <h3><button><a class = "a_botao" href="/cadastrarEvento">CADASTRAR EVENTO</a></button></h3>
+    </body>
+</html>
